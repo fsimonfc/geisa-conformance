@@ -330,7 +330,7 @@ launch_glee_tests_with_report_ssh() {
 	mkdir -p "${topdir}"/reports
 	SCP "${board_user}@[${board_ip}]:${remote_dir}/geisa-lee-conformance-report.xml" "${topdir}"/reports 1>/dev/null || {
 		echo -e "${RED}Error:${ENDCOLOR} Failed to copy test report from board"
-		exit 2
+		lee_test_exit_code=2
 	}
 
 	if ! ${NO_REBOOT}; then
@@ -348,7 +348,7 @@ launch_glee_tests_with_report_ssh() {
 			echo "Copying reboot tests report on host"
 			SCP "${board_user}@[${board_ip}]:${remote_dir}/geisa-lee-reboot-conformance-report.xml" "${topdir}"/reports 1>/dev/null || {
 				echo -e "${RED}Error:${ENDCOLOR} Failed to copy reboot test report from board"
-				exit 2
+				lee_test_exit_code=2
 			}
 		else
 			echo -e "${RED}Error:${ENDCOLOR} Reboot tests could not run"

@@ -169,7 +169,7 @@ launch_gapi_tests_with_report() {
 	mkdir -p "${topdir}"/reports
 	SCP "${board_user}@[${board_ip}]:/tmp/GAPI-tests/rootfs/geisa-api-conformance-report.xml" "${topdir}"/reports/ 1>/dev/null || {
 		echo -e "${RED}Error:${ENDCOLOR} Failed to retrieve test reports from board"
-		exit 2
+		api_test_exit_code=2
 	}
 	export api_test_exit_code
 }
